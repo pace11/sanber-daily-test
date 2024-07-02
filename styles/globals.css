@@ -1,0 +1,4 @@
+html, 
+body {
+    background-color: var(--chakra-colors-gray-100) !important;
+}
