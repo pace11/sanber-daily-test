@@ -8,8 +8,6 @@ import {
   Text,
   IconButton,
   CardBody,
-  CardFooter,
-  Button,
   Icon,
   Badge,
   Menu,
@@ -19,9 +17,6 @@ import {
 } from "@chakra-ui/react";
 import {
   IoEllipsisVertical,
-  IoHeartOutline,
-  IoHeart,
-  IoChatbubbleOutline,
 } from "react-icons/io5";
 import Link from "next/link";
 
@@ -58,9 +53,6 @@ export default function CardPost({ ...props }) {
               />
               <MenuList zIndex="2" minWidth="0">
                 <MenuItem onClick={() => props.onClickEdit()}>Edit</MenuItem>
-                <MenuItem onClick={() => props.onClickDelete()} color="red">
-                  Delete
-                </MenuItem>
               </MenuList>
             </Menu>
           )}
@@ -69,32 +61,6 @@ export default function CardPost({ ...props }) {
       <CardBody paddingTop="0" paddingBottom="0">
         <Text>{props?.description ?? ""}</Text>
       </CardBody>
-      <CardFooter justify="space-between" flexWrap="wrap" overflow="hidden">
-        <Button
-          size="sm"
-          flex="1"
-          variant="ghost"
-          onClick={() => props.onClickLikes(props?.is_like_post)}
-          leftIcon={
-            <Icon
-              as={props?.is_like_post ? IoHeart : IoHeartOutline}
-              boxSize="5"
-              color={props?.is_like_post && "red"}
-            />
-          }
-        >
-          {props?.likes_count || 0} {props?.likes_count > 1 ? "Likes" : "Like"}
-        </Button>
-        <Button
-          size="sm"
-          flex="1"
-          variant="ghost"
-          leftIcon={<Icon as={IoChatbubbleOutline} boxSize="5" />}
-          onClick={() => props.onClickReplies()}
-        >
-          {props?.replies_count || 0} Replies
-        </Button>
-      </CardFooter>
     </Card>
   );
 }

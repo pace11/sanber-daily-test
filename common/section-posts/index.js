@@ -6,9 +6,6 @@ import { Box } from "@chakra-ui/react";
 export default function SectionPost({
   data,
   loading,
-  onClickReplies,
-  onClickLikes,
-  onClickDelete,
   onClickEdit,
 }) {
   return (
@@ -18,15 +15,7 @@ export default function SectionPost({
           <CardPost
             key={idx}
             {...item}
-            onClickLikes={(type) =>
-              onClickLikes({
-                posts_id: item?.id,
-                type: type ? "/unlikes" : "/likes",
-              })
-            }
-            onClickReplies={() => onClickReplies({ posts_id: item?.id })}
             onClickEdit={() => onClickEdit({ posts_id: item?.id, description: item?.description })}
-            onClickDelete={() => onClickDelete({ posts_id: item?.id })}
           />
         ))}
       {data?.length === 0 && !loading && <EmptyState />}
